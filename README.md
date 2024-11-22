@@ -1,2 +1,2 @@
-# IRI
-Insured Retirement Institute Sandbox (not for official use)
+# Insured Retirement Institute
+Sandbox (not for official use)
