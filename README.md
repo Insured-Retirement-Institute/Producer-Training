@@ -1,8 +1,3 @@
-# Insured Retirement Institute
-Sandbox (not for official use)
+# Insured Retirement Institute Sandbox
 
-IRI Specifications can be found at https://app.swaggerhub.com/apis/curtislawhorn/IRI-APIs/1.0.0
-
-#IRI Specifications can be found at https://app.swaggerhub.com/apis/curtislawhorn/IRI-APIs/1.0.0
-
-##IRI Specifications can be found at https://app.swaggerhub.com/apis/curtislawhorn/IRI-APIs/1.0.0
+OpenAPI specifications can be found on [SwaggerHub](https://app.swaggerhub.com/apis/curtislawhorn/IRI-APIs/1.0.0).
