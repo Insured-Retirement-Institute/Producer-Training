@@ -8,6 +8,10 @@ This Training Update API provides financial professionals with real-time visibil
 ## Specifications under development
 - Producer Training | [[Definition]](https://app.swaggerhub.com/apis/curtislawhorn/IRI-APIs/1.0.0#/Producer%20Trainings) [[Download]](/Specifications/Producer%20Training)
 
+## Specification Champions (GitHub -Owners)
+Lana Nelson, Athene, Lana Nelson <LNelson@athene.com> 
+xx, RegEd, contact info 
+
 ## How to engage, contribute, and give feedback
 
 `coming soon`
