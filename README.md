@@ -3,7 +3,7 @@
 This Training Update API provides financial professionals with real-time visibility into their training statuses, reducing errors and enhancing the client experience. By addressing the issue of delayed or inaccurate training data, it helps prevent submission issues and maintains trust in financial transactions. This API delivers up-to-date training completion information, supporting a variety of certifications such as State, Product, and Anti-Money Laundering. The API can be integrated into multiple platforms, streamlining processes for distributors, carriers, and financial professionals.
 
 
-- Producer Can Sell | [[Definition]](https://app.swaggerhub.com/apis/curtislawhorn/IRI-APIs/1.0.0#/Producer%20Can%20Sell%20(under%20construction)/post_producer_can_sells_searches) [[Download]](/Specifications/Producer%20Can%20Sell)
+- Producer Can Sell | This message will remain within ACORD until such time that an agreement is reached. 
 
 ## Specifications under development
 - Producer Training | [[Definition]](https://app.swaggerhub.com/apis/curtislawhorn/IRI-APIs/1.0.0#/Producer%20Trainings) [[Download]](/Specifications/Producer%20Training)
