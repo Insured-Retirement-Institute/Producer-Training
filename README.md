@@ -6,7 +6,7 @@ This Training Update API provides financial professionals with real-time visibil
 - Producer Can Sell | Pending resolution of certain open questions, the Producer CanSell and ActivityStatus APIs are not and will not be included on this platform. Users will be notified if and when these APIs are added to the platform.
 
 ## Specifications under development
-- Producer Training | [[Definition]](https://app.swaggerhub.com/apis/curtislawhorn/IRI-APIs/1.0.0#/Producer%20Trainings) [[Download]](/Specifications/Producer%20Training)
+- Producer Training | Definition [[Download]](/Specifications/Producer%20Training)
 
 ## Specification Champions (GitHub -Owners)
 Lana Nelson, Athene, Lana Nelson <LNelson@athene.com> 
