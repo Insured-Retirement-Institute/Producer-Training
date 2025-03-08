@@ -5,7 +5,7 @@ This Training Update API provides financial professionals with real-time visibil
 ## Get started
 We are currently in the process of standing up [SwaggerHub](https://wwww.swaggerhub.com) to host OpenAPI definitions. More to come.
 
-Please refer to the [style guide](https://github.com/Insured-Retirement-Institute/Style-Guide) for governance of standards, data dictionary, and the code of conduct.
+Please refer to the [style guide](https://github.com/Insured-Retirement-Institute/Style-Guide) for technical governance of standards, data dictionary, and the code of conduct.
 
 ## Specification Champions (GitHub Owners)
 Lana Nelson <LNelson@athene.com>-Athene, RegEd
