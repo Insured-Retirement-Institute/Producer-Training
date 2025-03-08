@@ -16,7 +16,8 @@ Lana Nelson <LNelson@athene.com>-Athene, RegEd
 `coming soon`
 
 ## Governance of the Standard
-'coming soon'
+
+`coming soon`
 
 ## Reporting security issues and bugs
 
