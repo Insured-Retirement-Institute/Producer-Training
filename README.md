@@ -9,8 +9,8 @@ This Training Update API provides financial professionals with real-time visibil
 - Producer Training | Definition [[Download]](/Specifications)
 
 ## Specification Champions (GitHub Owners)
-Lana Nelson<LNelson@athene.com>, Athene
-RegEd 
+Lana Nelson <LNelson@athene.com>-Athene
+RegEd
 
 ## How to engage, contribute, and give feedback
 
