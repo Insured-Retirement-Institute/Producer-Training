@@ -12,7 +12,7 @@ Lana Nelson <LNelson@athene.com>-Athene, RegEd
 
 ## Reporting issues and bugs
 
-Security issues and bugs should be reported directly to Katherine Dease kdease@irionline.org. Issues and bugs can be reported directly within the issues tab above.
+Security issues and bugs should be reported directly to Katherine Dease kdease@irionline.org. Issues and bugs can be reported directly within the issues tab of the repository.
 
 ## Code of conduct
 
