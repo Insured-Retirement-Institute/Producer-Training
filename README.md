@@ -9,3 +9,7 @@ Please refer to the [style guide](https://github.com/Insured-Retirement-Institut
 
 ## Specification Champions (GitHub Owners)
 Lana Nelson <LNelson@athene.com>-Athene, RegEd
+
+## Code of conduct
+
+See [style guide](https://github.com/Insured-Retirement-Institute/Style-Guide)
