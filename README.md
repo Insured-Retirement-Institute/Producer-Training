@@ -10,9 +10,9 @@ Please refer to the [style guide](https://github.com/Insured-Retirement-Institut
 ## Specification Champions (GitHub Owners)
 Lana Nelson <LNelson@athene.com>-Athene, RegEd
 
-## Reporting issues and bugs
+## Change subsmissions and reporting issues and bugs
 
-Security issues and bugs should be reported directly to Katherine Dease kdease@irionline.org. Issues and bugs can be reported directly within the issues tab of the repository.
+Security issues and bugs should be reported directly to Katherine Dease kdease@irionline.org. Issues and bugs can be reported directly within the issues tab of a repository. Change requests should follow the standards governance workflow outlined on [main page](https://github.com/Insured-Retirement-Institute)
 
 ## Code of conduct
 
