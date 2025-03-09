@@ -12,7 +12,7 @@ Lana Nelson <LNelson@athene.com>-Athene, RegEd
 
 ## Change subsmissions and reporting issues and bugs
 
-Security issues and bugs should be reported directly to Katherine Dease kdease@irionline.org. Issues and bugs can be reported directly within the issues tab of a repository. Change requests should follow the standards governance workflow outlined on [main page](https://github.com/Insured-Retirement-Institute)
+Security issues and bugs should be reported directly to Katherine Dease kdease@irionline.org. Issues and bugs can be reported directly within the issues tab of a repository. Change requests should follow the standards governance workflow outlined on [main page](https://github.com/Insured-Retirement-Institute).
 
 ## Code of conduct
 
