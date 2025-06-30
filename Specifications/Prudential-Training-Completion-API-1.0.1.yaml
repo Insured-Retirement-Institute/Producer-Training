@@ -1,0 +1,504 @@
+openapi: 3.0.0
+info:
+  version: 1.0.1
+  title: Training Completion API
+  description: API for submitting training completion details for a producer.
+  contact:
+    name: 'tbd'
+    url: 'tbd'
+    email: tbd
+servers:
+  - url: placeholder
+    description: server placeholder
+
+paths:
+  /courses:
+    post:
+      tags:
+        - Training
+      summary: Create a training completion record
+      operationId: createTrainingCompletion
+      parameters:
+        - $ref: '#/components/parameters/RequestIdParam'
+        - $ref: '#/components/parameters/PartnerIdParam'
+        - $ref: '#/components/parameters/TraceIdParam'
+      requestBody:
+        description: Training completion record to create
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TrainingCompletionRequest'
+      responses:
+        '200':
+          $ref: '#/components/responses/TrainingCompletionResponse'
+        '400':
+          $ref: '#/components/responses/400BadRequest'
+        '401':
+          $ref: '#/components/responses/401UnauthorizedError'
+        '403':
+          $ref: '#/components/responses/403Forbidden'
+        '404':
+          $ref: '#/components/responses/404ResourceNotFoundError'
+        '500':
+          $ref: '#/components/responses/500ServerError'
+        '501':
+          $ref: '#/components/responses/501NotImplementedServerError'
+        '502':
+          $ref: '#/components/responses/502BadGatewayError'
+        '503':
+          $ref: '#/components/responses/503ServiceUnavailablesServerError'
+        '504':
+          $ref: '#/components/responses/504GatewayTimeoutError'
+      security:
+        - bearerAuth: []
+        - basicAuth: []
+tags:
+  - name: Training
+    description: Operations related to training completion of a producer
+components:
+  parameters:
+    RequestIdParam:
+      name: X-RequestID
+      in: header
+      description: Unique request id for each service call. Set by client
+      required: false
+      style: simple
+      explode: false
+      schema:
+        type: string
+    PartnerIdParam:
+      name: x-partner-id
+      in: header
+      description: 'partner id (who is calling the API)'
+      required: false
+      style: simple
+      explode: false
+      schema:
+        type: string
+    TraceIdParam:
+      name: x-trace-id
+      in: header
+      description: trace id
+      required: false
+      style: simple
+      explode: false
+      schema:
+        type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      description: A bearer token in the format of a JWS and conforms to the specifications included in RFC8725
+      scheme: bearer
+      bearerFormat: JWT
+    basicAuth:
+      type: http
+      scheme: basic
+  responses:
+    TrainingCompletionResponse:
+      description: Successful operation
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/TrainingCompletionResponse'
+          examples:
+            mixedResult:
+              value:
+                statusCode: 200
+                statusMessage: 'Some courses succeeded, others failed validation.'
+                validCourses:
+                  - courseProviderId: CP001
+                    vendorId: V123
+                    courseType: Product
+                    trainingMethod: OnlineTraining
+                    courseNumber: C12345
+                    statusCode: 200
+                    statusMessage: Course successfully updated
+                invalidCourses:
+                  - courseProviderId: CP002
+                    vendorId: V124
+                    courseType: State
+                    trainingMethod: Classroom
+                    courseNumber: C12346
+                    statusCode: 400
+                    statusMessage: Validation Error
+                    errors:
+                      - value: C12346
+                        msg: Course number is invalid.
+                        param: 'courses[1].courseNumber'
+                        location: body
+            Result:
+              value:
+                statusCode: 200
+                statusMessage: All courses were processed successfull.
+                validCourses:
+                  - courseProviderId: CP001
+                    vendorId: V123
+                    courseType: Product
+                    trainingMethod: OnlineTraining
+                    courseNumber: C12345
+                    statusCode: 200
+                    statusMessage: Course successfully updated
+                invalidCourses: []
+    400BadRequest:
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            badRequest:
+              value:
+                statusCode: '400,'
+                statusMessage: All courses failed validatio
+                invalidCourses:
+                  - courseProviderId: ''
+                    vendorId: V124
+                    courseType: State
+                    trainingMethod: Classroom
+                    courseNumber: C12346
+                    statusCode: 400
+                    statusMessage: Validation Error
+                    errors:
+                      - value: C12346
+                        msg: Course Provider ID cannot be empt.
+                        param: 'courses[1].courseNumber'
+                        location: body
+    401UnauthorizedError:
+      description: Unauthorized Error
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              status:
+                type: string
+                example: UNAUTHORIZED
+              message:
+                type: string
+                example: Unauthorized Error Occured
+    403Forbidden:
+      description: Forbidden Error
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              status:
+                type: string
+                example: FORBIDDEN
+              message:
+                type: string
+                example: Forbidden Error Occured
+    404ResourceNotFoundError:
+      description: Resource Not Found Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            notFound:
+              value:
+                status: NOT_FOUND
+                message: Resource not found
+    500ServerError:
+      description: An internal server error occurred
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            internalServerError:
+              value:
+                status: INTERNAL_SERVER_ERROR
+                message: A server error occurred
+    501NotImplementedServerError:
+      description: Not Implemented Server error occurred
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              status:
+                type: string
+                example: NOT_IMPLEMENTED_SERVER_ERROR
+              message:
+                type: string
+                example: Not Implemented Server error occurred
+    502BadGatewayError:
+      description: Bad Gateway error occurred
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              status:
+                type: string
+                example: BAD_GATEWAY_ERROR
+              message:
+                type: string
+                example: Bad Gateway error occurred
+    503ServiceUnavailablesServerError:
+      description: Service Unavailable error occurred
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              status:
+                type: string
+                example: SERVICE_UNAVAILABLE_ERROR
+              message:
+                type: string
+                example: Service Unavailable error occurred
+    504GatewayTimeoutError:
+      description: Gateway Timeout Error occurred
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              status:
+                type: string
+                example: GATEWAY_TIMEOUT_ERROR
+              message:
+                type: string
+                example: A server error occurred
+  schemas:
+    TrainingCompletionRequest:
+      type: object
+      properties:
+        nationalProducerNumber:
+          type: string
+          description: National Producer Number
+          example: '1234567890'
+        courses:
+          type: array
+          description: Array of course records
+          items:
+            type: object
+            properties:
+              courseProviderId:
+                type: string
+                description: Course Provider ID
+                pattern: '^[A-Za-z0-9]+$'
+                minLength: 1
+                maxLength: 4
+                example: REGD
+              vendorId:
+                type: string
+                description: Training vendor
+                pattern: '^[A-Za-z0-9-]+$'
+                minLength: 1
+                maxLength: 10
+                example: V123
+              courseType:
+                type: string
+                enum:
+                  - Product
+                  - State
+                  - BestInterest
+                description: Course Type
+                example: Product
+              trainingMethod:
+                type: string
+                enum:
+                  - OnlineTraining
+                  - Classroom
+                  - ReferenceMaterials
+                  - Wholesaler
+                description: Training Method Code
+                example: OnlineTraining
+              courseNumber:
+                type: string
+                description: Course Number
+                pattern: '^[A-Za-z0-9]+$'
+                minLength: 1
+                maxLength: 20
+                example: C12345
+              completionDate:
+                type: string
+                description: Course Completion Date
+                format: date
+                example: '2024-04-10'
+              state:
+                type: string
+                description: 'The state where training was completed.  If courseType is Product, state is optional'
+                pattern: '^[A-Z]{2}$'
+                example: NY
+              productTrainingCategory:
+                type: string
+                enum:
+                  - FixedDeferredAnnuity
+                  - AllInsuranceProducts
+                  - VariableFixedDeferredAnnuity
+                  - LongTermDisability
+                  - EquityIndexAnnuity
+                  - FixedImmediateAnnuity
+                  - VariableImmediateAnnuity
+                  - LongTermCare
+                  - N/A
+                  - PartnershipDisability
+                  - Life
+                  - VariableDeferredAnnuity
+                  - AllAnnuities
+                  - AllFixedAnnuities
+                  - AllVariableAnnuities
+                description: Product Training Category
+                example: FixedDeferredAnnuity
+              title:
+                type: string
+                description: |
+                  Title of the course.
+                  - Required for 'State' and 'Best Interest' course types.
+                  - For 'product' course type, it defaults to 24PRUCDA01 if not provided.
+                maxLength: 40
+                example: Title of the course
+              expiryDate:
+                type: string
+                description: 'Expiry date of the training. If not provided, defaults to "12/31/9999".'
+                format: date
+                example: '2024-04-10'
+              creditHours:
+                type: integer
+                description: |
+                  The Number of hours assigned to this course for training purpose.
+                  - Required for 'State' and 'Best Interest' course types.
+                  - For 'product' course type, it defaults to 0 if not provided.
+                format: int32
+                minimum: 0
+                maximum: 99
+                example: 4
+              certificationDate:
+                type: string
+                description: Course Certification Date
+                format: date
+                example: '2024-04-10'
+              certificationNumber:
+                type: string
+                description: Course Certification Number
+                example: CERT123456
+            required:
+              - courseProviderId
+              - vendorId
+              - courseType
+              - trainingMethod
+              - courseNumber
+              - completionDate
+              - productTrainingCategory
+      required:
+        - nationalProducerNumber
+        - courses
+    TrainingCompletionResponse:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          description: Status Code for the course update operation
+          format: int32
+          minimum: 0
+          maximum: 1000
+          example: 400
+        statusMessage:
+          type: string
+          description: Status Message for the course update operation
+          example: Validation Error
+        validCourses:
+          type: array
+          description: Array of courses that were successfully processed
+          items:
+            $ref: '#/components/schemas/ValidCourseResponse'
+        invalidCourses:
+          type: array
+          description: Array of courses that failed validation
+          items:
+            $ref: '#/components/schemas/InvalidCourseResponse'
+    ValidCourseResponse:
+      type: object
+      properties:
+        courseProviderId:
+          type: string
+          description: Course Provider ID
+        vendorId:
+          type: string
+          description: Training vendor
+        courseType:
+          type: string
+          description: Course Type
+        trainingMethod:
+          type: string
+          description: Training Method Code
+        courseNumber:
+          type: string
+          description: Course Number
+        statusCode:
+          type: integer
+          description: Status Code for the course update operation
+          format: int32
+          minimum: 0
+          maximum: 1000
+        statusMessage:
+          type: string
+          description: Status Message for the course update operation
+    InvalidCourseResponse:
+      type: object
+      properties:
+        courseProviderId:
+          type: string
+          nullable: true
+          description: Course Provider ID
+        vendorId:
+          type: string
+          nullable: true
+          description: Training vendor
+        courseType:
+          type: string
+          nullable: true
+          description: Course Type
+        trainingMethod:
+          type: string
+          nullable: true
+          description: Training Method Code
+        courseNumber:
+          type: string
+          description: Course Number
+        statusCode:
+          type: integer
+          description: Status Code for the course update operation
+          format: int32
+          minimum: 0
+          maximum: 1000
+          example: 400
+        statusMessage:
+          type: string
+          description: Status Message for the course update operation
+          example: Validation Error
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              value:
+                type: string
+                description: Invalid value
+              msg:
+                type: string
+                description: Error message
+              param:
+                type: string
+                description: Parameter with the error
+              location:
+                type: string
+                description: 'Location of the error (e.g., body, query)'
+    ErrorResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: ERROR
+        message:
+          type: string
+          example: An error occurred
+security:
+  - bearerAuth: []
+  - basicAuth: []
