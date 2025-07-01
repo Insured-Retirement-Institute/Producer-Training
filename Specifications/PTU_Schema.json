@@ -1,0 +1,140 @@
+{
+  "type": "object",
+  "properties": {
+	"messageInformation": {"$ref": "#/$defs/messageInformation"},
+    "provider": {
+      "type": "string",
+      "example": "RGED"
+    },
+    "npn": {
+      "type": "string",
+      "example": "1234567890"
+    },
+    "carrier": {
+      "type": "string",
+      "example": "909090909"
+    },
+    "CUSIP": {
+      "type": "string",
+      "example": "1234567890"
+    },
+    "providerId": {
+      "type": "string",
+      "example": "ABC Inc"
+    },
+    "courseURL": {
+      "type": "string",
+      "example": "https://www.reged.com/courses/132566"
+    },
+    "completionStage": {
+      "type": "string",
+      "example": "New"
+    },
+    "courseId": {
+      "type": "string",
+      "example": "132566"
+    },
+    "courseName": {
+      "type": "string",
+      "example": "Carrier A Version 5 Producer Training"
+    },
+    "courseMethod": {
+      "type": "string",
+      "example": "Online"
+    },
+    "courseType": {
+      "type": "string",
+      "example": "Product"
+    },
+    "productTrainingType": {
+      "type": "string",
+      "example": "Fixed Deferred Annuity"
+    },
+    "status": {
+      "type": "string",
+      "example": "Not Started"
+    },
+    "completionInformation": {
+      "type": "object",
+      "properties": {
+        "certificationDate": {
+          "type": "string",
+          "format": "date",
+          "example": "2025-02-10"
+        },
+        "credentialHours": {
+          "type": "integer",
+          "example": 25
+        },
+        "certificationNumber": {
+          "type": "string",
+          "example": "34652643"
+        },
+        "continuingEducationHours": {
+          "type": "integer",
+          "example": 10
+        },
+        "completionDate": {
+          "type": "string",
+          "format": "date",
+          "example": "2025-02-10"
+        },
+        "certificationState": {
+          "type": "string",
+          "example": "CT"
+        },
+        "expirationDate": {
+          "type": "string",
+          "format": "date",
+          "example": "2026-02-09"
+        }
+      }
+    }
+  },
+  "$defs": {
+        "messageInformation": {
+            "type": "object",
+            "description": "The Message Information Resource is designed to provide all the information about a message.",
+            "properties": {
+                "businessPurposeTypeCode": {
+                    "type": "string",
+                    "enum": ["PTU"],
+                    "description": "A code indicating the business event being submitted in this message."
+                },
+                "effectiveDate": {
+                    "format": "date",
+                    "type": "string",
+                    "description": "The date on which this transaction takes effect."
+                },
+                "receiver": {
+                    "type": "string",
+                    "description": "this is to identify the recivever of this particular transaction.",
+                    "minLength": 8,
+                    "maxLength": 8,
+                    "pattern": "(^[0-9]{1,9}$)(?<!^0+$)"
+                },
+                "sender": {
+                    "type": "string",
+                    "description": "this is to identify the sender of this particular transaction.",
+                    "minLength": 8,
+                    "maxLength": 8,
+                    "pattern": "(^[0-9]{1,9}$)(?<!^0+$)"
+                },
+                "trackingNumber": {
+                    "type": "string",
+                    "description": "This is an alphanumeric value used to identify a specific transaction.",
+                    "minLength": 1,
+                    "maxLength": 65
+                }
+            },
+            "additionalProperties": false,
+            "required": [
+                "businessPurposeTypeCode",
+                "effectiveDate",
+                "receiver",
+                "sender",
+                "trackingNumber"
+            ]
+        }
+  }
+}
