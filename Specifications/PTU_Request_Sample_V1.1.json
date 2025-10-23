@@ -1,0 +1,41 @@
+{
+    "messageInformation": {
+        "messageType": "PTU",
+        "sender": "00004500",
+        "receiver": "00000122",
+        "trackingNumber": "DTCC-TEST-PTUTesting-658"
+    },
+    "producer": {
+        "firstName":"john",
+        "lastName": "DOE",
+        "npn": "123343434",
+        "crd": "123343434",
+        "ssn": "123343434"
+    },
+    "courseInformationList": [
+        {
+            "provider": "WEbcE",
+            "ID": "COURSE345",
+            "name": "Understanding Annuities",
+            "method": "REFERENCE MATERIALS",
+            "type": "PRODUCT",
+            "originatingJurisdiction": "DC",
+			"originatingJurisdictionCreditHours": 7,
+            "reciprocityJurisdictionsList": [
+				{
+				"jurisdiction": "NY",
+				"creditHours": 5
+				},
+               {
+				"jurisdiction": "NJ",
+				"creditHours": 7
+				}
+            ],
+			
+            "cusip":["449817501"],
+           "productTrainingCategory":"Deferred Income Annuity",
+            "trainingCompletionDate": "2025-02-10",
+            "trainingExpirationDate": "2025-10-10"
+        }
+    ]
+}

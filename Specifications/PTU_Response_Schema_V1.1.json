@@ -1,0 +1,40 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+        "trackingNumber": {
+		    "type": "string",
+			"description": "This is an alphanumeric value used to identify a specific transaction.",
+			"minLength": 1,
+			"maxLength": 65
+		},
+        "messageStatus": {
+            "$ref": "#/$defs/messageStatus"
+        }
+    },
+    "required": [
+        "trackingNumber",
+        "messageStatus"
+    ],
+    "$defs": {
+        "messageStatus": {
+            "type": "object",
+            "description": "This object is used in a response message to provide the complete status from the result of processing the matching request",
+            "properties": {
+                "statusCode": {
+                    "type": "string",
+                    "description": "A code  for response messages indicating the status or result following receipt of the request message.",
+					"minLength": 3,
+                    "maxLength": 4,
+                    "enum": [
+                        "200"
+                    ]
+                }
+            },
+            "additionalProperties": false,
+            "required": [
+                "statusCode"
+            ]
+        }
+    }
+}
